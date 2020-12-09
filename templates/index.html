@@ -1,0 +1,25 @@
+{% block index %}
+<!doctype html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>Kalkulator walut</title>
+        
+        {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        {% endblock %}
+
+    </head>
+
+    <body align=center>
+
+        <h1>Witaj w przeliczniku walut</h1>
+        
+        <div id="content">{% block content %}{% endblock %}</div>
+
+    </body>
+
+</html>
+{% endblock %}

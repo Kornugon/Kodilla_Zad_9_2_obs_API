@@ -1,0 +1,24 @@
+body {
+  background-color: rgba(54, 54, 88, 0.082);
+  }
+
+h1 {
+    font-size: 35px;
+    color: black;
+    border: 1px solid grey;
+    background-color: grey;
+  }
+  
+h2 {
+    font-size: 50px;
+    color: rgb(0, 0, 192);
+  }
+
+p {
+    font-size: 25px;
+    color: black;
+  }
+
+.wid {
+  width: 70px;
+}
