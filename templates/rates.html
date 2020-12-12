@@ -2,28 +2,24 @@
 {% block content %}
 
 <form action="" method="POST">
-    <label for="choosen">Wybierz walutę</label>
-    <select name="choosen">
+
+    <label for="choosen">Wybierz walutę: </label>
+    <select ID="choosen" name="choosen">
         <option selected="selected">{{ choose }}</option>
         {% for item in items %}
         <option value="{{ item }}">{{item}}</option>
         {% endfor %}
     </select>
     
-    <br><br>
-    <table align=center>
-        <tr>
-            <td><label for="amount">Ilość: </label></td>
-            <td><input class="wid" type="text" id="amount" name="amount" placeholder=" {{ amount }} "></td>
-        </tr>
-        <tr>
-            <td><label for="exchange">Wynik (PLN): </label></td>
-            <td><input class="wid" name="rate" placeholder=" {{ rate }} "></td>
-        </tr>
-    </table>
 
-    <br>
-    <input type="submit" value="Przelicz">
+    <p><label for="amount">Ilość: </label>
+    <input class="wid" type="text" id="amount" name="amount" placeholder=" {{ amount }} "></p>
+
+    <p><label for="exchange">Wynik (PLN): </label>
+    </td><input class="wid" name="rate" placeholder=" {{ rate }} "></p>
+
+    <p class="wid"><input type="submit" value="Przelicz"></p>
+
 </form>
 
 {% endblock %}

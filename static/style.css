@@ -3,22 +3,14 @@ body {
   }
 
 h1 {
+    text-align: center;
     font-size: 35px;
     color: black;
     border: 1px solid grey;
     background-color: grey;
   }
-  
-h2 {
-    font-size: 50px;
-    color: rgb(0, 0, 192);
-  }
 
-p {
-    font-size: 25px;
-    color: black;
-  }
-
-.wid {
-  width: 70px;
-}
+form { display: table; margin: auto;}
+p     { display: table-row; font-size: 16px;}
+label { display: table-cell; font-size: 16px;}
+input { display: table-cell; width: 70px; margin-top:7px}

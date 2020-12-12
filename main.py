@@ -37,36 +37,20 @@ Czy można "zapiklować" więcej niż jeden obiekt na raz bez opakowywania ich w
 Czy mogę "zapiklować" instancję klasy?
 Czy używanie pickle jest zawsze bezpieczne?
 """
-import os
-import csv
 import json
-import pickle
 
 import requests
 from flask import Flask, request, render_template
+
+from utils import pick, export_rates_to_csv
+
+
+
 
 app = Flask(__name__)
 
 response = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
 curr = response.json()[0]['rates']
-
-
-def export_rates_to_csv(val):
-    """
-    Create or use existing folder to save a file.
-    Save Rates list in to a .csv file
-    """
-    SAVED_FOLDER = 'Saved'
-
-    file_path = os.path.join(SAVED_FOLDER, "Rates.csv")
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
-    with open(file_path, "w", newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, delimiter=';', fieldnames=["currency", "code", "bid", "ask"])
-        writer.writeheader()
-        for item in val:
-            writer.writerow(item)
-    print("Successfully exported data to Rates.csv in Saved subfolder of the script")
 
 
 
@@ -86,6 +70,7 @@ def get_rates():
     return render_template("rates.html", items=items)
 
 
+
 @app.route("/rates", methods=["GET", "POST"])
 def get_value():
     """
@@ -100,17 +85,10 @@ def get_value():
         item = i['currency']
         items.append(item)
         if choose == i["currency"]:
-            rate = round(amo / i["bid"], 4)
+            rate = round(amo * i["ask"], 4)
     return render_template("rates.html", items=items, amount=amo, rate=rate, choose=choose)
 
 
-
-curr = response.json()[0]['rates']
-def pick(val):
-    ogorek = []
-    for i in val:
-        ogorek.append(i)
-    return ogorek
 
 
 
